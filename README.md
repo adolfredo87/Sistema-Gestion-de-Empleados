@@ -26,9 +26,9 @@ Correo: adolfredobelizario87@hotmail.com / adolfredobelizario87@gmail.com
 -----------------------
 
 
-Procesador 	 			- Procesador Intel® Pentium® III MMX 3500 MHz
+Procesador 	 			- Procesador Intel® Pentium® V MMX 3500 MHz
 
-Memoria		 			- 2000 Mb RAM
+Memoria		 			- 3000 Mb RAM
 
 Disco duro	 			- 1000 Mb de espacio libre en disco duro
 
