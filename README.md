@@ -34,7 +34,7 @@ Disco duro	 			- 1000 Mb de espacio libre en disco duro
 
 Sistema operativo		- Windows® XP/7/8
 
-Sistemas Adicionales 	- Visual Studio 2010 y SQL Server 2008
+Sistemas Adicionales 	- Visual Studio 2017 y SQL Server 2008
 
 
 ---------------------------------------
