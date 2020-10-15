@@ -17,7 +17,7 @@ Ing. Adolfredo Nicolas Belizario Ojeda.
 
 Nº de Colegio Ingeniero de Venezuela: 294.866
 
-Cel: +58 426 9508247 / +58 426-9545053
+Cel: +58 426 9508247 / +58 426-9545053 / +54 911 2251-3156
 
 Correo: adolfredobelizario87@hotmail.com / adolfredobelizario87@gmail.com
 
