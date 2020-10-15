@@ -45,7 +45,7 @@ Sistema de Gestion de Empleados:
 
 Sistema de Gestion de Empleados desarrollado en C# con SQL Server 2008: 
 
-BD: Diagrama ER, Creación de Tablas, Creación de Store Procedure, Creación Vistas SQL, Programacion SQL.
+BD: Diagrama ER, Creación de Tablas, Creación de Store Procedure, Programacion SQL.
 
 Metodología: Desarrollo en C# ASP.Net MVC (Modelo-Vista-Controlador).
 
@@ -54,3 +54,50 @@ Back-End: C# (ASP.Net MVC), Linq C#, Expresiones Lambda C#, .Net Entity Framewor
 Front-End: HTML, CSS, JavaScript, JQuery, XML, JSON, etc. 
 
 Software (c) 2020 Adolfredo Belizario. Este Software fue creado por Adolfredo Belizario bajo licencia MPL v2.0 con el propósito de mostrar mi trabajo a Reclutadores en Desarrollo en .Net y C#
+
+
+-----------------------
+3. Correr Sistema
+-----------------------
+
+Para ejecutar es necesario correr el script BD.sql que se encunetra en Empleados\Base de Datos\Scripts en el SQL Server 2008-2016 en el directorio Empleados\Base de Datos\BD se encuentra el mdf y el log de la BD.
+
+<p align="center"><img src="MyImg/1.jpg"/></p>
+
+Es necesario que modifiques el directorio a don de guardas tu BD.
+
+<p align="center"><img src="MyImg/2.jpg" /></p>
+
+Luego corres la soluccion de Visual Studio 2017 Empleados\Solucion\Empleados.sln espera que se cargen todos los paquetes NuGet y listo pulsa F5.
+
+<p align="center"><img src="MyImg/3.jpg" /></p>
+
+Luego debe de mostrarte una pantalla principal como la que vez abajo.
+
+<p align="center"><img src="MyImg/4.jpg" /></p>
+
+En el caso que quieras verificar los empleados concretamente debes de ir a la seccion de Empleados en el Menu Maestros, Inicialmente son cargados todos inicialmente, luego si quieres filtrar determinada opcion puedes usar el boton buscar que te abre una pantalla de asistente para busqueda avanzada en el cual puedes buscar por multiples parametros y cualquier campo en concreto.
+
+<p align="center"><img src="MyImg/5.jpg" /></p>
+
+<p align="center"><img src="MyImg/6.jpg" /></p>
+
+<p align="center"><img src="MyImg/7.jpg" /></p>
+
+<p align="center"><img src="MyImg/8.jpg" /></p>
+
+Tambien puedes ver/modificar/eliminar un empleado en concreto pulsando los botones acciones
+
+<p align="center"><img src="MyImg/9.jpg" /></p>
+
+En el caso de que quieras editar o eliminar o ver puedes seleccionar el boton correspondiente.
+
+<p align="center"><img src="MyImg/10.jpg" /></p>
+
+<p align="center"><img src="MyImg/11.jpg" /></p>
+
+<p align="center"><img src="MyImg/12.jpg" /></p>
+
+Y tambien puedes modificar los multiplos de Sueldo de cada empleado para el calculo anual, ya que te brinda una opccion de editar y ver el maestro de tipos de contrato
+
+<p align="center"><img src="MyImg/13.jpg" /></p>
