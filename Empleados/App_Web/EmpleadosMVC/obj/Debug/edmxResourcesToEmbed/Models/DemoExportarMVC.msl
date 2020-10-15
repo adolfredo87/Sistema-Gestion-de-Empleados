@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DemoEmpleadosMVCModelStoreContainer" CdmEntityContainer="DemoEmpleadosMVCEntities">
+    <EntitySetMapping Name="ArchivoSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Archivo">
+        <MappingFragment StoreEntitySet="archivo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="IDExtension" ColumnName="IDExtension" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Archivo">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_INCARCHIVO">
+            <ScalarProperty Name="IDExtension" ParameterName="IEXTENSION" />
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_MODARCHIVO">
+            <ScalarProperty Name="IDExtension" ParameterName="IEXTENSION" Version="Current" />
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" Version="Current" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_ELIARCHIVO">
+            <ScalarProperty Name="IDExtension" ParameterName="IEXTENSION" />
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+            <ScalarProperty Name="ID" ParameterName="IID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConfiguracionSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Configuracion">
+        <MappingFragment StoreEntitySet="configuracion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IDArchivo" ColumnName="IDArchivo" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Ruta_A" ColumnName="Ruta_A" />
+          <ScalarProperty Name="Ruta_B" ColumnName="Ruta_B" />
+          <ScalarProperty Name="File_A" ColumnName="File_A" />
+          <ScalarProperty Name="File_B" ColumnName="File_B" />
+          <ScalarProperty Name="File_EXT" ColumnName="File_EXT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Configuracion">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_INCCONFIGURACION">
+            <ScalarProperty Name="File_EXT" ParameterName="VEXT" />
+            <ScalarProperty Name="File_B" ParameterName="VFILE_B" />
+            <ScalarProperty Name="File_A" ParameterName="VFILE_A" />
+            <ScalarProperty Name="Ruta_B" ParameterName="VRUTA_B" />
+            <ScalarProperty Name="Ruta_A" ParameterName="VRUTA_A" />
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" />
+            <ScalarProperty Name="IDArchivo" ParameterName="IARCHIVO" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_MODCONFIGURACION">
+            <ScalarProperty Name="File_EXT" ParameterName="VEXT" Version="Original" />
+            <ScalarProperty Name="File_B" ParameterName="VFILE_B" Version="Original" />
+            <ScalarProperty Name="File_A" ParameterName="VFILE_A" Version="Original" />
+            <ScalarProperty Name="Ruta_B" ParameterName="VRUTA_B" Version="Original" />
+            <ScalarProperty Name="Ruta_A" ParameterName="VRUTA_A" Version="Original" />
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" Version="Original" />
+            <ScalarProperty Name="IDArchivo" ParameterName="IARCHIVO" Version="Current" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" Version="Current" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_ELICONFIGURACION">
+            <ScalarProperty Name="File_EXT" ParameterName="VEXT" />
+            <ScalarProperty Name="File_B" ParameterName="VFILE_B" />
+            <ScalarProperty Name="File_A" ParameterName="VFILE_A" />
+            <ScalarProperty Name="Ruta_B" ParameterName="VRUTA_B" />
+            <ScalarProperty Name="Ruta_A" ParameterName="VRUTA_A" />
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" />
+            <ScalarProperty Name="IDArchivo" ParameterName="IARCHIVO" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+            <ScalarProperty Name="ID" ParameterName="IID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EncargoSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Encargo">
+        <MappingFragment StoreEntitySet="encargo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Albaran" ColumnName="Albaran" />
+          <ScalarProperty Name="Destinario" ColumnName="Destinario" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EncargoHitoricoSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.EncargoHitorico">
+        <MappingFragment StoreEntitySet="encargo_hist">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Albaran" ColumnName="Albaran" />
+          <ScalarProperty Name="Destinario" ColumnName="Destinario" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Status_Procesado" ColumnName="Status_Procesado" />
+          <ScalarProperty Name="Fecha_Procesado" ColumnName="Fecha_Procesado" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.EncargoHitorico">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_INCENCARGOHIST">
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" />
+            <ScalarProperty Name="Archivo" ParameterName="VARCHIVO" />
+            <ScalarProperty Name="Fecha_Procesado" ParameterName="DFECHA_PROCESADO" />
+            <ScalarProperty Name="Status_Procesado" ParameterName="IESTATUS" />
+            <ScalarProperty Name="Fecha" ParameterName="DFECHA" />
+            <ScalarProperty Name="Observaciones" ParameterName="VOBSERVACIONES" />
+            <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+            <ScalarProperty Name="Provincia" ParameterName="VPROVINCIA" />
+            <ScalarProperty Name="CP" ParameterName="VCP" />
+            <ScalarProperty Name="Poblacion" ParameterName="VPOBLACION" />
+            <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" />
+            <ScalarProperty Name="Destinario" ParameterName="VDESTINARIO" />
+            <ScalarProperty Name="Albaran" ParameterName="VALBARAN" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_MODENCARGOHIST">
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" Version="Original" />
+            <ScalarProperty Name="Archivo" ParameterName="VARCHIVO" Version="Original" />
+            <ScalarProperty Name="Fecha_Procesado" ParameterName="DFECHA_PROCESADO" Version="Original" />
+            <ScalarProperty Name="Status_Procesado" ParameterName="IESTATUS" Version="Original" />
+            <ScalarProperty Name="Fecha" ParameterName="DFECHA" Version="Current" />
+            <ScalarProperty Name="Observaciones" ParameterName="VOBSERVACIONES" Version="Current" />
+            <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" Version="Current" />
+            <ScalarProperty Name="Provincia" ParameterName="VPROVINCIA" Version="Current" />
+            <ScalarProperty Name="CP" ParameterName="VCP" Version="Current" />
+            <ScalarProperty Name="Poblacion" ParameterName="VPOBLACION" Version="Current" />
+            <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" Version="Current" />
+            <ScalarProperty Name="Destinario" ParameterName="VDESTINARIO" Version="Current" />
+            <ScalarProperty Name="Albaran" ParameterName="VALBARAN" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_ELIENCARGOHIST">
+            <ScalarProperty Name="Ruta" ParameterName="VRUTA" />
+            <ScalarProperty Name="Archivo" ParameterName="VARCHIVO" />
+            <ScalarProperty Name="Fecha_Procesado" ParameterName="DFECHA_PROCESADO" />
+            <ScalarProperty Name="Status_Procesado" ParameterName="IESTATUS" />
+            <ScalarProperty Name="Fecha" ParameterName="DFECHA" />
+            <ScalarProperty Name="Observaciones" ParameterName="VOBSERVACIONES" />
+            <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+            <ScalarProperty Name="Provincia" ParameterName="VPROVINCIA" />
+            <ScalarProperty Name="CP" ParameterName="VCP" />
+            <ScalarProperty Name="Poblacion" ParameterName="VPOBLACION" />
+            <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" />
+            <ScalarProperty Name="Destinario" ParameterName="VDESTINARIO" />
+            <ScalarProperty Name="Albaran" ParameterName="VALBARAN" />
+            <ScalarProperty Name="ID" ParameterName="IID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExtensionSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Extension">
+        <MappingFragment StoreEntitySet="extension">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="DemoEmpleadosMVCModel.Extension">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_INCEXTENSION">
+            <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_MODEXTENSION">
+            <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" Version="Current" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="DemoEmpleadosMVCModel.Store.USP_ELIEXTENSION">
+            <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+            <ScalarProperty Name="ID" ParameterName="IID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

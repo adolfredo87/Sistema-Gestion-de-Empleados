@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DemoEmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Correo" Type="varchar" MaxLength="255" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Sueldo" Type="float" Nullable="false" />
+          <Property Name="SueldoAnual" Type="float" Nullable="false" />
+          <Property Name="Estatus" Type="int" Nullable="false" />
+          <Property Name="IDTipo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipoContracto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="255" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="MultiploAnual" Type="int" />
+          <Property Name="Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TipoContracto">
+          <End Role="tipoContracto" Type="Self.tipoContracto" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoContracto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="IDTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="USP_ELIEMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IEMPLEADO" Type="int" Mode="In" />
+          <Parameter Name="VDNI" Type="varchar" Mode="In" />
+          <Parameter Name="VNOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="VTELEFONO" Type="varchar" Mode="In" />
+          <Parameter Name="VCORREO" Type="varchar" Mode="In" />
+          <Parameter Name="VDIRECCION" Type="varchar" Mode="In" />
+          <Parameter Name="FSUELDO" Type="float" Mode="In" />
+          <Parameter Name="FSUELDOANUAL" Type="float" Mode="In" />
+          <Parameter Name="IIDTIPO" Type="int" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ELITIPOCONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="IMULTIPLOANUAL" Type="int" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INCEMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VDNI" Type="varchar" Mode="In" />
+          <Parameter Name="VNOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="VTELEFONO" Type="varchar" Mode="In" />
+          <Parameter Name="VCORREO" Type="varchar" Mode="In" />
+          <Parameter Name="VDIRECCION" Type="varchar" Mode="In" />
+          <Parameter Name="FSUELDO" Type="float" Mode="In" />
+          <Parameter Name="FSUELDOANUAL" Type="float" Mode="In" />
+          <Parameter Name="IIDTIPO" Type="int" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INCTIPOCONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="IMULTIPLOANUAL" Type="int" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MODEMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IEMPLEADO" Type="int" Mode="In" />
+          <Parameter Name="VDNI" Type="varchar" Mode="In" />
+          <Parameter Name="VNOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="VTELEFONO" Type="varchar" Mode="In" />
+          <Parameter Name="VCORREO" Type="varchar" Mode="In" />
+          <Parameter Name="VDIRECCION" Type="varchar" Mode="In" />
+          <Parameter Name="FSUELDO" Type="float" Mode="In" />
+          <Parameter Name="FSUELDOANUAL" Type="float" Mode="In" />
+          <Parameter Name="IIDTIPO" Type="int" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MODTIPOCONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="IMULTIPLOANUAL" Type="int" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DemoEmpleadosModelStoreContainer">
+          <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoContracto" EntityType="Self.tipoContracto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TipoContracto" Association="Self.FK_TipoContracto">
+            <End Role="tipoContracto" EntitySet="tipoContracto" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemoEmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DNI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sueldo" Type="Double" Nullable="false" />
+          <Property Name="SueldoAnual" Type="Double" Nullable="false" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+          <Property Name="IDTipo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoContracto" Relationship="Self.FK_TipoContracto" FromRole="empleado" ToRole="tipoContracto" />
+        </EntityType>
+        <EntityType Name="TipoContracto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MultiploAnual" Type="Int32" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_TipoContracto" FromRole="tipoContracto" ToRole="empleado" />
+        </EntityType>
+        <Association Name="FK_TipoContracto">
+          <End Role="tipoContracto" Type="DemoEmpleadosModel.TipoContracto" Multiplicity="1" />
+          <End Role="empleado" Type="DemoEmpleadosModel.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoContracto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="IDTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DemoEmpleadosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmpleadoSet" EntityType="DemoEmpleadosModel.Empleado" />
+          <EntitySet Name="TipoContractoSet" EntityType="DemoEmpleadosModel.TipoContracto" />
+          <AssociationSet Name="FK_TipoContracto" Association="Self.FK_TipoContracto">
+            <End Role="tipoContracto" EntitySet="TipoContractoSet" />
+            <End Role="empleado" EntitySet="EmpleadoSet" />
+          </AssociationSet>
+          <FunctionImport Name="USP_ELIEMPLEADO">
+            <Parameter Name="IEMPLEADO" Mode="In" Type="Int32" />
+            <Parameter Name="VDNI" Mode="In" Type="String" />
+            <Parameter Name="VNOMBRE" Mode="In" Type="String" />
+            <Parameter Name="VTELEFONO" Mode="In" Type="String" />
+            <Parameter Name="VCORREO" Mode="In" Type="String" />
+            <Parameter Name="VDIRECCION" Mode="In" Type="String" />
+            <Parameter Name="FSUELDO" Mode="In" Type="Double" />
+            <Parameter Name="FSUELDOANUAL" Mode="In" Type="Double" />
+            <Parameter Name="IIDTIPO" Mode="In" Type="Int32" />
+            <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ELITIPOCONTRATO">
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+            <Parameter Name="VCODIGO" Mode="In" Type="String" />
+            <Parameter Name="VDESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="IMULTIPLOANUAL" Mode="In" Type="Int32" />
+            <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_INCEMPLEADO">
+            <Parameter Name="VDNI" Mode="In" Type="String" />
+            <Parameter Name="VNOMBRE" Mode="In" Type="String" />
+            <Parameter Name="VTELEFONO" Mode="In" Type="String" />
+            <Parameter Name="VCORREO" Mode="In" Type="String" />
+            <Parameter Name="VDIRECCION" Mode="In" Type="String" />
+            <Parameter Name="FSUELDO" Mode="In" Type="Double" />
+            <Parameter Name="FSUELDOANUAL" Mode="In" Type="Double" />
+            <Parameter Name="IIDTIPO" Mode="In" Type="Int32" />
+            <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_INCTIPOCONTRATO">
+            <Parameter Name="VCODIGO" Mode="In" Type="String" />
+            <Parameter Name="VDESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="IMULTIPLOANUAL" Mode="In" Type="Int32" />
+            <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MODEMPLEADO">
+            <Parameter Name="IEMPLEADO" Mode="In" Type="Int32" />
+            <Parameter Name="VDNI" Mode="In" Type="String" />
+            <Parameter Name="VNOMBRE" Mode="In" Type="String" />
+            <Parameter Name="VTELEFONO" Mode="In" Type="String" />
+            <Parameter Name="VCORREO" Mode="In" Type="String" />
+            <Parameter Name="VDIRECCION" Mode="In" Type="String" />
+            <Parameter Name="FSUELDO" Mode="In" Type="Double" />
+            <Parameter Name="FSUELDOANUAL" Mode="In" Type="Double" />
+            <Parameter Name="IIDTIPO" Mode="In" Type="Int32" />
+            <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MODTIPOCONTRATO">
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+            <Parameter Name="VCODIGO" Mode="In" Type="String" />
+            <Parameter Name="VDESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="IMULTIPLOANUAL" Mode="In" Type="Int32" />
+            <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DemoEmpleadosModelStoreContainer" CdmEntityContainer="DemoEmpleadosEntities">
+          <EntitySetMapping Name="EmpleadoSet">
+            <EntityTypeMapping TypeName="DemoEmpleadosModel.Empleado">
+              <MappingFragment StoreEntitySet="empleado">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+                <ScalarProperty Name="SueldoAnual" ColumnName="SueldoAnual" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoEmpleadosModel.Empleado">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoEmpleadosModel.Store.USP_INCEMPLEADO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="IDTipo" ParameterName="IIDTIPO" />
+                  <ScalarProperty Name="SueldoAnual" ParameterName="FSUELDOANUAL" />
+                  <ScalarProperty Name="Sueldo" ParameterName="FSUELDO" />
+                  <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" />
+                  <ScalarProperty Name="Correo" ParameterName="VCORREO" />
+                  <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+                  <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+                  <ScalarProperty Name="DNI" ParameterName="VDNI" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoEmpleadosModel.Store.USP_MODEMPLEADO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Current" />
+                  <ScalarProperty Name="IDTipo" ParameterName="IIDTIPO" Version="Current" />
+                  <ScalarProperty Name="SueldoAnual" ParameterName="FSUELDOANUAL" Version="Current" />
+                  <ScalarProperty Name="Sueldo" ParameterName="FSUELDO" Version="Current" />
+                  <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" Version="Current" />
+                  <ScalarProperty Name="Correo" ParameterName="VCORREO" Version="Current" />
+                  <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" Version="Current" />
+                  <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" Version="Current" />
+                  <ScalarProperty Name="DNI" ParameterName="VDNI" Version="Original" />
+                  <ScalarProperty Name="ID" ParameterName="IEMPLEADO" Version="Original" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoEmpleadosModel.Store.USP_ELIEMPLEADO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="IDTipo" ParameterName="IIDTIPO" />
+                  <ScalarProperty Name="SueldoAnual" ParameterName="FSUELDOANUAL" />
+                  <ScalarProperty Name="Sueldo" ParameterName="FSUELDO" />
+                  <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" />
+                  <ScalarProperty Name="Correo" ParameterName="VCORREO" />
+                  <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+                  <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+                  <ScalarProperty Name="DNI" ParameterName="VDNI" />
+                  <ScalarProperty Name="ID" ParameterName="IEMPLEADO" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoContractoSet">
+            <EntityTypeMapping TypeName="DemoEmpleadosModel.TipoContracto">
+              <MappingFragment StoreEntitySet="tipoContracto">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="MultiploAnual" ColumnName="MultiploAnual" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoEmpleadosModel.TipoContracto">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoEmpleadosModel.Store.USP_INCTIPOCONTRATO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="MultiploAnual" ParameterName="IMULTIPLOANUAL" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoEmpleadosModel.Store.USP_MODTIPOCONTRATO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Original" />
+                  <ScalarProperty Name="MultiploAnual" ParameterName="IMULTIPLOANUAL" Version="Current" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" Version="Current" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Original" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoEmpleadosModel.Store.USP_ELITIPOCONTRATO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="MultiploAnual" ParameterName="IMULTIPLOANUAL" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                  <ScalarProperty Name="ID" ParameterName="IID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_ELIEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_ELIEMPLEADO" />
+          <FunctionImportMapping FunctionImportName="USP_ELITIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_ELITIPOCONTRATO" />
+          <FunctionImportMapping FunctionImportName="USP_INCEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_INCEMPLEADO" />
+          <FunctionImportMapping FunctionImportName="USP_INCTIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_INCTIPOCONTRATO" />
+          <FunctionImportMapping FunctionImportName="USP_MODEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_MODEMPLEADO" />
+          <FunctionImportMapping FunctionImportName="USP_MODTIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_MODTIPOCONTRATO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="3a21d046eed9466696f8e834f72c36dc" Name="Diagram1">
+        <EntityTypeShape EntityType="DemoEmpleadosModel.Empleado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoEmpleadosModel.TipoContracto" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="DemoEmpleadosModel.FK_TipoContracto" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DemoEmpleadosModelStoreContainer" CdmEntityContainer="DemoEmpleadosEntities">
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="DemoEmpleadosModel.Empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+          <ScalarProperty Name="SueldoAnual" ColumnName="SueldoAnual" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoContracto">
+      <EntityTypeMapping TypeName="DemoEmpleadosModel.TipoContracto">
+        <MappingFragment StoreEntitySet="tipoContracto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="MultiploAnual" ColumnName="MultiploAnual" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_ELIEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_ELIEMPLEADO" />
+    <FunctionImportMapping FunctionImportName="USP_ELITIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_ELITIPOCONTRATO" />
+    <FunctionImportMapping FunctionImportName="USP_INCEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_INCEMPLEADO" />
+    <FunctionImportMapping FunctionImportName="USP_INCTIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_INCTIPOCONTRATO" />
+    <FunctionImportMapping FunctionImportName="USP_MODEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_MODEMPLEADO" />
+    <FunctionImportMapping FunctionImportName="USP_MODTIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_MODTIPOCONTRATO" />
+  </EntityContainerMapping>
+</Mapping>

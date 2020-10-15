@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DemoEmpleadosMVCModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="DemoEmpleadosMVCEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="ArchivoSet" EntityType="DemoEmpleadosMVCModel.Archivo" />
+    <EntitySet Name="ConfiguracionSet" EntityType="DemoEmpleadosMVCModel.Configuracion" />
+    <EntitySet Name="EncargoSet" EntityType="DemoEmpleadosMVCModel.Encargo" />
+    <EntitySet Name="EncargoHitoricoSet" EntityType="DemoEmpleadosMVCModel.EncargoHitorico" />
+    <EntitySet Name="ExtensionSet" EntityType="DemoEmpleadosMVCModel.Extension" />
+    <AssociationSet Name="FK_Archivo_Extension" Association="DemoEmpleadosMVCModel.FK_Archivo_Extension">
+      <End Role="extension" EntitySet="ExtensionSet" />
+      <End Role="archivo" EntitySet="ArchivoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Archivo" Association="DemoEmpleadosMVCModel.FK_Configuracion_Archivo">
+      <End Role="archivo" EntitySet="ArchivoSet" />
+      <End Role="configuracion" EntitySet="ConfiguracionSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Archivo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="Nombre" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Ruta" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="IDExtension" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="extension" Relationship="DemoEmpleadosMVCModel.FK_Archivo_Extension" FromRole="archivo" ToRole="extension" />
+    <NavigationProperty Name="configuraciones" Relationship="DemoEmpleadosMVCModel.FK_Configuracion_Archivo" FromRole="archivo" ToRole="configuracion" />
+  </EntityType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="IDArchivo" Type="Int32" Nullable="false" />
+    <Property Name="Ruta" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Ruta_A" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Ruta_B" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="File_A" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="File_B" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="File_EXT" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="archivo" Relationship="DemoEmpleadosMVCModel.FK_Configuracion_Archivo" FromRole="configuracion" ToRole="archivo" />
+  </EntityType>
+  <EntityType Name="Encargo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="Albaran" Type="Int32" Nullable="false" />
+    <Property Name="Destinario" Type="String" Nullable="false" MaxLength="28" Unicode="false" FixedLength="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="Poblacion" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CP" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="Provincia" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EncargoHitorico">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="Albaran" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Destinario" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Direccion" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Poblacion" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="CP" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Provincia" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" />
+    <Property Name="Status_Procesado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Procesado" Type="DateTime" Nullable="false" />
+    <Property Name="Archivo" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Ruta" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Extension">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="Codigo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="archivos" Relationship="DemoEmpleadosMVCModel.FK_Archivo_Extension" FromRole="extension" ToRole="archivo" />
+  </EntityType>
+  <Association Name="FK_Archivo_Extension">
+    <End Role="extension" Type="DemoEmpleadosMVCModel.Extension" Multiplicity="1" />
+    <End Role="archivo" Type="DemoEmpleadosMVCModel.Archivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="extension">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="archivo">
+        <PropertyRef Name="IDExtension" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Archivo">
+    <End Role="archivo" Type="DemoEmpleadosMVCModel.Archivo" Multiplicity="1" />
+    <End Role="configuracion" Type="DemoEmpleadosMVCModel.Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="archivo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="configuracion">
+        <PropertyRef Name="IDArchivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

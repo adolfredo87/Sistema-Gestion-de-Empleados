@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DemoEmpleadosModelStoreContainer" CdmEntityContainer="DemoEmpleadosEntities">
+    <EntitySetMapping Name="EmpleadoSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosModel.Empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+          <ScalarProperty Name="SueldoAnual" ColumnName="SueldoAnual" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="DemoEmpleadosModel.Empleado">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="DemoEmpleadosModel.Store.USP_INCEMPLEADO">
+            <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+            <ScalarProperty Name="IDTipo" ParameterName="IIDTIPO" />
+            <ScalarProperty Name="SueldoAnual" ParameterName="FSUELDOANUAL" />
+            <ScalarProperty Name="Sueldo" ParameterName="FSUELDO" />
+            <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" />
+            <ScalarProperty Name="Correo" ParameterName="VCORREO" />
+            <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+            <ScalarProperty Name="DNI" ParameterName="VDNI" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="DemoEmpleadosModel.Store.USP_MODEMPLEADO">
+            <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Current" />
+            <ScalarProperty Name="IDTipo" ParameterName="IIDTIPO" Version="Current" />
+            <ScalarProperty Name="SueldoAnual" ParameterName="FSUELDOANUAL" Version="Current" />
+            <ScalarProperty Name="Sueldo" ParameterName="FSUELDO" Version="Current" />
+            <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" Version="Current" />
+            <ScalarProperty Name="Correo" ParameterName="VCORREO" Version="Current" />
+            <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" Version="Current" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" Version="Current" />
+            <ScalarProperty Name="DNI" ParameterName="VDNI" Version="Original" />
+            <ScalarProperty Name="ID" ParameterName="IEMPLEADO" Version="Original" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="DemoEmpleadosModel.Store.USP_ELIEMPLEADO">
+            <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+            <ScalarProperty Name="IDTipo" ParameterName="IIDTIPO" />
+            <ScalarProperty Name="SueldoAnual" ParameterName="FSUELDOANUAL" />
+            <ScalarProperty Name="Sueldo" ParameterName="FSUELDO" />
+            <ScalarProperty Name="Direccion" ParameterName="VDIRECCION" />
+            <ScalarProperty Name="Correo" ParameterName="VCORREO" />
+            <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+            <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+            <ScalarProperty Name="DNI" ParameterName="VDNI" />
+            <ScalarProperty Name="ID" ParameterName="IEMPLEADO" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoContractoSet">
+      <EntityTypeMapping TypeName="DemoEmpleadosModel.TipoContracto">
+        <MappingFragment StoreEntitySet="tipoContracto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="MultiploAnual" ColumnName="MultiploAnual" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="DemoEmpleadosModel.TipoContracto">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="DemoEmpleadosModel.Store.USP_INCTIPOCONTRATO">
+            <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+            <ScalarProperty Name="MultiploAnual" ParameterName="IMULTIPLOANUAL" />
+            <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="DemoEmpleadosModel.Store.USP_MODTIPOCONTRATO">
+            <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Original" />
+            <ScalarProperty Name="MultiploAnual" ParameterName="IMULTIPLOANUAL" Version="Current" />
+            <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" Version="Current" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="IID" Version="Original" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="DemoEmpleadosModel.Store.USP_ELITIPOCONTRATO">
+            <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+            <ScalarProperty Name="MultiploAnual" ParameterName="IMULTIPLOANUAL" />
+            <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+            <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+            <ScalarProperty Name="ID" ParameterName="IID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_ELIEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_ELIEMPLEADO" />
+    <FunctionImportMapping FunctionImportName="USP_ELITIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_ELITIPOCONTRATO" />
+    <FunctionImportMapping FunctionImportName="USP_INCEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_INCEMPLEADO" />
+    <FunctionImportMapping FunctionImportName="USP_INCTIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_INCTIPOCONTRATO" />
+    <FunctionImportMapping FunctionImportName="USP_MODEMPLEADO" FunctionName="DemoEmpleadosModel.Store.USP_MODEMPLEADO" />
+    <FunctionImportMapping FunctionImportName="USP_MODTIPOCONTRATO" FunctionName="DemoEmpleadosModel.Store.USP_MODTIPOCONTRATO" />
+  </EntityContainerMapping>
+</Mapping>

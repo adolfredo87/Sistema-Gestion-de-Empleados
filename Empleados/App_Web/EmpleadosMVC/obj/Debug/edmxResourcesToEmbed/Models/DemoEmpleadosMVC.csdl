@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DemoEmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DNI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sueldo" Type="Double" Nullable="false" />
+    <Property Name="SueldoAnual" Type="Double" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="IDTipo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipoContracto" Relationship="Self.FK_TipoContracto" FromRole="empleado" ToRole="tipoContracto" />
+  </EntityType>
+  <EntityType Name="TipoContracto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MultiploAnual" Type="Int32" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_TipoContracto" FromRole="tipoContracto" ToRole="empleado" />
+  </EntityType>
+  <Association Name="FK_TipoContracto">
+    <End Role="tipoContracto" Type="DemoEmpleadosModel.TipoContracto" Multiplicity="1" />
+    <End Role="empleado" Type="DemoEmpleadosModel.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoContracto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="IDTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DemoEmpleadosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="empleado" EntityType="DemoEmpleadosModel.Empleado" />
+    <EntitySet Name="tipoContracto" EntityType="DemoEmpleadosModel.TipoContracto" />
+    <AssociationSet Name="FK_TipoContracto" Association="Self.FK_TipoContracto">
+      <End Role="tipoContracto" EntitySet="tipoContracto" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <FunctionImport Name="USP_ELIEMPLEADO">
+      <Parameter Name="IEMPLEADO" Mode="In" Type="Int32" />
+      <Parameter Name="VDNI" Mode="In" Type="String" />
+      <Parameter Name="VNOMBRE" Mode="In" Type="String" />
+      <Parameter Name="VTELEFONO" Mode="In" Type="String" />
+      <Parameter Name="VCORREO" Mode="In" Type="String" />
+      <Parameter Name="VDIRECCION" Mode="In" Type="String" />
+      <Parameter Name="FSUELDO" Mode="In" Type="Double" />
+      <Parameter Name="FSUELDOANUAL" Mode="In" Type="Double" />
+      <Parameter Name="IIDTIPO" Mode="In" Type="Int32" />
+      <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ELITIPOCONTRATO">
+      <Parameter Name="IID" Mode="In" Type="Int32" />
+      <Parameter Name="VCODIGO" Mode="In" Type="String" />
+      <Parameter Name="VDESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="IMULTIPLOANUAL" Mode="In" Type="Int32" />
+      <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_INCEMPLEADO">
+      <Parameter Name="VDNI" Mode="In" Type="String" />
+      <Parameter Name="VNOMBRE" Mode="In" Type="String" />
+      <Parameter Name="VTELEFONO" Mode="In" Type="String" />
+      <Parameter Name="VCORREO" Mode="In" Type="String" />
+      <Parameter Name="VDIRECCION" Mode="In" Type="String" />
+      <Parameter Name="FSUELDO" Mode="In" Type="Double" />
+      <Parameter Name="FSUELDOANUAL" Mode="In" Type="Double" />
+      <Parameter Name="IIDTIPO" Mode="In" Type="Int32" />
+      <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_INCTIPOCONTRATO">
+      <Parameter Name="VCODIGO" Mode="In" Type="String" />
+      <Parameter Name="VDESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="IMULTIPLOANUAL" Mode="In" Type="Int32" />
+      <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_MODEMPLEADO">
+      <Parameter Name="IEMPLEADO" Mode="In" Type="Int32" />
+      <Parameter Name="VDNI" Mode="In" Type="String" />
+      <Parameter Name="VNOMBRE" Mode="In" Type="String" />
+      <Parameter Name="VTELEFONO" Mode="In" Type="String" />
+      <Parameter Name="VCORREO" Mode="In" Type="String" />
+      <Parameter Name="VDIRECCION" Mode="In" Type="String" />
+      <Parameter Name="FSUELDO" Mode="In" Type="Double" />
+      <Parameter Name="FSUELDOANUAL" Mode="In" Type="Double" />
+      <Parameter Name="IIDTIPO" Mode="In" Type="Int32" />
+      <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_MODTIPOCONTRATO">
+      <Parameter Name="IID" Mode="In" Type="Int32" />
+      <Parameter Name="VCODIGO" Mode="In" Type="String" />
+      <Parameter Name="VDESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="IMULTIPLOANUAL" Mode="In" Type="Int32" />
+      <Parameter Name="IESTATUS" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
